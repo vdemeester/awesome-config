@@ -1,0 +1,6 @@
+*
+!.config
+!.config/awesome
+!.config/awesome/*.lua
+!.gitignore.d
+!.gitignore.d/awesome-config
