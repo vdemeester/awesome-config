@@ -214,7 +214,10 @@ root.buttons(awful.util.table.join(
 
 -- Bepoified
 local bepo_numkeys = {
-   [0]="asterisk", "quotedbl", "guillemotleft", "guillemotright", "parenleft", "parenright", "at", "plus", "minus", "slash"
+   -- This is real bepo
+   -- [0]="asterisk", "quotedbl", "guillemotleft", "guillemotright", "parenleft", "parenright", "at", "plus", "minus", "slash"
+   -- This is for bepo-sbr
+   [0]="asterisk", "quotedbl", "less", "greater", "parenleft", "parenright", "at", "plus", "minus", "slash"
 }
 
 globalkeys = awful.util.table.join(
