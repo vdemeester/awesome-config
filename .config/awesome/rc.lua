@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local vicious = require("vicious")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -38,10 +39,10 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init("/home/vincent/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtc"
+terminal = "urxvtcd"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -109,6 +110,16 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibox
+--Battery Widget  
+batt = wibox.widget.textbox()  
+function get_batterystatus()  
+    local filedescriptor = io.popen("/home/vincent/bin/awbatt.sh")  
+    local value = filedescriptor:read()  
+    filedescriptor:close()  
+    return {value}  
+end  
+vicious.register(batt, get_batterystatus, '$1', 10) 
+
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
@@ -189,6 +200,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(batt)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
