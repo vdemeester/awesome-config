@@ -2,5 +2,16 @@
 !.config
 !.config/awesome
 !.config/awesome/*.lua
+!.config/awesome/icons
+!.config/awesome/icons/**
+!.config/awesome/scratch
+!.config/awesome/scratch/**.lua
+!.config/awesome/scripts
+!.config/awesome/scripts/**
+!.config/awesome/themes
+!.config/awesome/themes/powerarrow-sbr
+!.config/awesome/themes/powerarrow-sbr/**
+!.config/awesome/yawn
+!.config/awesome/yawn/**
 !.gitignore.d
 !.gitignore.d/awesome-config
