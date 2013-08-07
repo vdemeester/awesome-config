@@ -5,7 +5,7 @@
 !.config/awesome/icons
 !.config/awesome/icons/**
 !.config/awesome/scratch
-!.config/awesome/scratch/**.lua
+!.config/awesome/scratch/**
 !.config/awesome/scripts
 !.config/awesome/scripts/**
 !.config/awesome/themes
