@@ -175,6 +175,7 @@ mysystem = {
 }
 
 myawesomemenu = {
+   { "wallpaper", "random-wallpaper" },
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
