@@ -672,7 +672,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "j", function() menubar.show() end),
 
     -- Dropdown terminal
-    awful.key({ modkey }, "$", function() scratch.drop(tmux_terminal) end)
+    awful.key({ modkey }, "$", function() scratch.drop(tmux_terminal) end),
+
+    -- Lock
+    awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("slock") end)
 
 )
 
