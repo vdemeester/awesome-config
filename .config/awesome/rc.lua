@@ -67,7 +67,7 @@ terminal = "urxvtcd"
 tmux_terminal = terminal .. " -e tmx default"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
-gui_editor = "subl"
+gui_editor = "emacsclient -c"
 browser = "firefox"
 browser2 = "chromium-browser"
 mail = "thunderbird"
@@ -597,7 +597,8 @@ end
 root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 5, awful.tag.viewprev),
+    awful.button({ }, 10, function() awful.util.spawn("slock") end)
 ))
 -- }}}
 
@@ -675,8 +676,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "$", function() scratch.drop(tmux_terminal) end),
 
     -- Lock
-    awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("slock") end)
+    awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("slock") end),
 
+    -- Editor (gui)
+    awful.key({ modkey}, "p", function() awful.util.spawn(gui_editor) end)
 )
 
 clientkeys = awful.util.table.join(
