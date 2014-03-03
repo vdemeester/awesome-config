@@ -63,7 +63,7 @@ active_theme = themes .. "/powerarrow-sbr"
 beautiful.init(active_theme .. "/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtcd"
+terminal = "urxvt"
 tmux_terminal = terminal .. " -e tmx default"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
