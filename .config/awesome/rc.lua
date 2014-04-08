@@ -136,8 +136,8 @@ wp_timer:start()
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "web", "dev", "status", "chat", "music", "misc"},
-    layout = { layouts[6], layouts[3], layouts[6], layouts[2], layouts[8], layouts[7] }
+    names = { "mail", "web", "dev", "status", "chat", "music", "misc"},
+    layout = { layouts[6], layouts[6], layouts[3], layouts[6], layouts[2], layouts[8], layouts[7] }
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
