@@ -44,7 +44,7 @@ case "$SYSTEM" in
 "Linux" )
 DF_COMMAND="/bin/df -k"
 SORT_COMMAND="/usr/bin/sort -k6"
-AWK_COMMAND="/bin/awk"
+AWK_COMMAND="/usr/bin/awk"
 ;;
 * )
 DF_COMMAND="/bin/df -k"
