@@ -676,7 +676,7 @@ globalkeys = awful.util.table.join(
    awful.key({ modkey }, "$", function() scratch.drop(tmux_terminal) end),
 
    -- Lock
-   awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("slock") end),
+   awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("screenlock") end),
 
    -- Editor (gui)
    awful.key({ modkey}, "p", function() awful.util.spawn(gui_editor) end)
