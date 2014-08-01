@@ -770,13 +770,6 @@ awful.rules.rules = {
      properties = { tag = tags[1][2] } },
    { rule = { class = "Thunderbird" },
      properties = { tag = tags[1][1] } },
-   {
-      rule = { class = "Plasma-desktop" },
-      properties = { floating = true },
-      callback = function(c)
-         c:geometry( { width = 600 , height = 500 } )
-      end,
-   },
 }
 -- }}}
 
