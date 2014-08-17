@@ -657,6 +657,9 @@ globalkeys = awful.util.table.join(
    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
+   awful.key({}, "XF86MonBrightnessDown", function() awful.util.spawn("xblacklight -decc 10") end),
+   awful.key({}, "XF86MonBrightnessUp", function() awful.util.spawn("xblacklight -inc 10") end),
+
    awful.key({ modkey, "Control" }, "'", awful.client.restore),
 
    -- Prompt
