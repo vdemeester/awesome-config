@@ -9,7 +9,7 @@
 theme = {}
 
 themes_dir                                  = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-sbr"
-theme.wallpaper                             = themes_dir .. "/wall.png"
+-- theme.wallpaper                             = themes_dir .. "/wall.png"
 
 theme.font                                  = "Ubuntu 9"
 theme.bg_normal     = "#222222"
