@@ -99,40 +99,6 @@ local layouts =
       awful.layout.suit.magnifier
    }
 -- }}}
-
--- {{{ Wallpaper
-if beautiful.wallpaper then
-   for s = 1, screen.count() do
-      gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-   end
-end
--- configuration - edit to your liking
-wp_index = 1
-wp_timeout  = 3600
-
--- setup the timer
-wp_timer = timer { timeout = wp_timeout }
-wp_timer:connect_signal("timeout", function()
-
-                           -- set wallpaper to current index
-                           awful.util.spawn("random-wallpaper", false)
-                           -- gears.wallpaper.maximized( wp_path .. wp_files[wp_index] , s, true)
-
-                           -- stop the timer (we don't need multiple instances running at the same time)
-                           wp_timer:stop()
-
-                           -- get next random index
-                           -- wp_index = math.random( 1, #wp_files)
-
-                           --restart the timer
-                           wp_timer.timeout = wp_timeout
-                           wp_timer:start()
-end)
-
--- initial start when rc.lua is first run
-wp_timer:start()
--- }}}
-
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
@@ -167,15 +133,11 @@ mygraphics = {
    { "inkscape", "inkscape" },
    { "image viewer", "gqview" }
 }
-mydev = {
-   { "eclipse", "eclipse" }
-}
 mysystem = {
    { "task manager", tasks }
 }
 
 myawesomemenu = {
-   { "wallpaper", "random-wallpaper" },
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
@@ -185,7 +147,6 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = {
                              { "accessories", myaccessories },
                              { "internet", myinternet },
-                             { "dev", mydev },
                              { "office", myoffice },
                              { "graphics", mygraphics },
                              { "system", mysystem },
@@ -331,13 +292,6 @@ cpuwidget = wibox.widget.textbox()
 vicious.register(cpuwidget, vicious.widgets.cpu, '<span background="#313131" rise="2000"> $1% </span>', 3)
 cpuicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(tasks, false) end)))
 
--- Temp widget
-tempicon = wibox.widget.imagebox()
-tempicon:set_image(beautiful.widget_temp)
-tempicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(terminal .. " -e sudo powertop ", false) end)))
-tempwidget = wibox.widget.textbox()
-vicious.register(tempwidget, vicious.widgets.thermal, ' $1°C ', 9, {"coretemp.0", "core"} )
-
 -- /home fs widget
 fshicon = wibox.widget.imagebox()
 fshicon:set_image(beautiful.widget_hdd)
@@ -450,22 +404,6 @@ vicious.register(batwidget, vicious.widgets.bat,
                     return '<span font="Terminus 12"> <span font="Terminus 9">' .. args[2] .. '% </span></span>'
                  end, 1, 'BAT0')
 
--- Volume widget
-volicon = wibox.widget.imagebox()
-volicon:set_image(beautiful.widget_vol)
-volumewidget = wibox.widget.textbox()
-vicious.register(volumewidget, vicious.widgets.volume,
-                 function (widget, args)
-                    if (args[2] ~= "♩" ) then
-                       if (args[1] == 0) then volicon:set_image(beautiful.widget_vol_no)
-                       elseif (args[1] <= 50) then  volicon:set_image(beautiful.widget_vol_low)
-                       else volicon:set_image(beautiful.widget_vol)
-                       end
-                    else volicon:set_image(beautiful.widget_vol_mute)
-                    end
-                    return '<span font="Terminus 12"> <span font="Terminus 9">' .. args[1] .. '% </span></span>'
-                 end, 1, "Master")
-
 -- Separators
 spr = wibox.widget.textbox(' ')
 arrl = wibox.widget.imagebox()
@@ -560,17 +498,12 @@ for s = 1, screen.count() do
    if s == 1 then right_layout:add(wibox.widget.systray()) end
    right_layout:add(spr)
    right_layout:add(arrl)
-   right_layout:add(volicon)
-   right_layout:add(volumewidget)
-   right_layout:add(arrl)
    right_layout:add(memicon)
    right_layout:add(memwidget)
    right_layout:add(arrl_ld)
    right_layout:add(cpuicon)
    right_layout:add(cpuwidget)
    right_layout:add(arrl_dl)
-   right_layout:add(tempicon)
-   right_layout:add(tempwidget)
    right_layout:add(arrl_ld)
    right_layout:add(fshicon)
    right_layout:add(fshwidget)
