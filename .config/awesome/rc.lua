@@ -90,20 +90,15 @@ local layouts =
       awful.layout.suit.tile.left,
       awful.layout.suit.tile.bottom,
       awful.layout.suit.tile.top,
-      awful.layout.suit.fair,
-      awful.layout.suit.fair.horizontal,
-      awful.layout.suit.spiral,
-      awful.layout.suit.spiral.dwindle,
       awful.layout.suit.max,
-      awful.layout.suit.max.fullscreen,
-      awful.layout.suit.magnifier
+      awful.layout.suit.max.fullscreen
    }
 -- }}}
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
    names = { "mail", "web", "dev", "status", "chat", "music", "misc"},
-   layout = { layouts[6], layouts[6], layouts[3], layouts[6], layouts[2], layouts[8], layouts[7] }
+   layout = { layouts[6], layouts[6], layouts[6], layouts[6], layouts[2], layouts[6], layouts[6] }
 }
 for s = 1, screen.count() do
    -- Each screen has its own tag table.
@@ -120,7 +115,7 @@ myaccessories = {
 myinternet = {
    { "browser", browser },
    { "mail", mail },
-   { "chat", "pidgin" },
+   { "chat", "gajim" },
    { "skype", "skype" }
 }
 myoffice = {
